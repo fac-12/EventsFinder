@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/fac-12/EventsFinder#readme",
   "devDependencies": {
+    "env2": "^2.2.0",
     "nodemon": "^1.12.1",
+    "pg": "^7.4.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.8.0"
   }
