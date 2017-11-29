@@ -12,6 +12,10 @@ var searchEvent = document.getElementById('search-event');
 
 addEventForm.addEventListener('submit', function(e){
     e.preventDefault();
+    var url = '/add-event';
+    var body = 'name=' + inputName.value + "&date=" + datePicker.value
+                 + "&event-time=" + eventTime.value + "&venue-option=" + venueOptions.value;
+    request(url, addEvent, 'POST');
 })
 
 searchEventForm.addEventListener('submit', function(e){
@@ -23,7 +27,7 @@ searchEventForm.addEventListener('submit', function(e){
     request(url, searchEvent, 'GET');
 })
 
-function request(url, cb, method) {
+function request(url, cb, method, body) {
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4 && xhr.status === 200) {
@@ -32,6 +36,6 @@ function request(url, cb, method) {
       }
     };
     xhr.open(method, url, true);
-    xhr.send();
+    xhr.send(body);
   }
 
