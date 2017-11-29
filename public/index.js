@@ -15,7 +15,7 @@ addEventForm.addEventListener('submit', function(e){
     var url = '/add-event';
     var body = 'name=' + inputName.value + "&date=" + datePicker.value
                  + "&event-time=" + eventTime.value + "&venue-option=" + venueOptions.value;
-    request(url, addEvent, 'POST');
+    request(url, addEvent, 'POST', body);
 })
 
 searchEventForm.addEventListener('submit', function(e){
