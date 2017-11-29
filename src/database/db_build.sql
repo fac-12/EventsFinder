@@ -21,6 +21,7 @@ CREATE TABLE events (
     name VARCHAR(100) NOT NULL,
     date DATE NOT NULL,
     time TIME NOT NULL,
+    url VARCHAR(100),
     host_id INTEGER REFERENCES hosts(id) ON UPDATE CASCADE,
     venue_id INTEGER REFERENCES venues(id) ON UPDATE CASCADE,
     duration VARCHAR(50)
