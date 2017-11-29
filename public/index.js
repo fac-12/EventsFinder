@@ -14,18 +14,30 @@ addEventForm.addEventListener('submit', function(e){
     e.preventDefault();
     var url = '/add-event';
     var body = 'name=' + inputName.value + "&date=" + datePicker.value
-                 + "&event-time=" + eventTime.value + "&venue-option=" + venueOptions.value;
+                 + "&time=" + eventTime.value + "&venue=" + venueOptions.value;
     request(url, addEvent, 'POST', body);
-})
+});
+
+function addEvent(response) {
+
+};
+
+function searchEvent(response) {
+
+};
 
 searchEventForm.addEventListener('submit', function(e){
     e.preventDefault();
-    var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-event=" + searchEvent.value;
+    var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-host=" + searchEvent.value;
       if (endDatePicker.value) {
         url += '&edate=' + endDatePicker.value;
       }
     request(url, searchEvent, 'GET');
-})
+});
+
+function updateHostList() {
+  
+}
 
 function request(url, cb, method, body) {
     var xhr = new XMLHttpRequest();
@@ -36,6 +48,7 @@ function request(url, cb, method, body) {
       }
     };
     xhr.open(method, url, true);
+    console.log("sending "+body);
     xhr.send(body);
   }
 
