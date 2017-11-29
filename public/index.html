@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link  rel="stylesheet" href="./public/style.css">
-    <title>FAC-Related Events</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./public/style.css">
+  <title>FAC-Related Events</title>
 </head>
+
 <body>
-    
+  <form class="" action="/add-event" method="post">
+    <label for='name'>Name
+      <input id='name' class='input-field' type="text" >
+    </label>
+    <label for="date-picker" class="input-field"> Start Date
+       <input type="date" class="date-picker" id="date-picker">
+    </label>
+    <label for='eventTime'>Time
+      <input id='eventTime' class='input_type' type="time" >
+    </label>
+  <select class="venue_options" name="">
+    <option value="Node Girls"> Node Girls  </option>
+ </select>
+ </form>
+
+ <form class="" action="/search" method="get">
+   <label for="start-date-picker" class="input-field"> Start Date
+      <input type="date" class="start-date-picker" id="start-date-picker">
+   </label>
+   <label for="end-date-picker" class="input-field"> End Date (optional)
+       <input type="date" class="end-date-picker" id="end-date-picker">
+   </label>
+   <label for='search-event'>Search by Host
+     <input id='search-event' class='input-field' type="text" >
+   </label>
+   <button type="submit">Submit</button>
+  </form>
+
+<section class="events-display">
+  <div class="error_display">  </div>
+
+
+</section>
+
 </body>
 <script src="./public/index.js"></script>
+
 </html>
