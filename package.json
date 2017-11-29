@@ -1,0 +1,25 @@
+{
+  "name": "eventsfinder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape ./tests/*.test.js | tap-spec",
+    "start": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fac-12/EventsFinder.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fac-12/EventsFinder/issues"
+  },
+  "homepage": "https://github.com/fac-12/EventsFinder#readme",
+  "devDependencies": {
+    "nodemon": "^1.12.1",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.8.0"
+  }
+}
