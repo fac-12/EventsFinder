@@ -12,6 +12,7 @@ const router = (request, response) => {
     handlers.searchHandler(request, response, endpoint);
   }
   else if (endpoint.indexOf('add-event') !== -1) {
+    console.log("in handler");
     handlers.addEventHandler(request, response, endpoint);
   }
   else {

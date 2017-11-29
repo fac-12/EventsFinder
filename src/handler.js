@@ -46,11 +46,19 @@ const staticFileHandler = (request, response, endpoint) => {
 }
 
 const searchHandler = (request, response, endpoint) => {
-  
+  const url = endpoint.split("?")[1];
+  console.log(url);
 };
 
 const addEventHandler = (request, response, endpoint) => {
-
+  let formData = '';
+  request.on('data', function(data) {
+    formData += data;
+  });
+  request.on('end', function() {
+      var parsedData = querystring.parse(formData);
+      console.log(parsedData);
+  });
 };
 
 module.exports = {
