@@ -20,11 +20,11 @@ CREATE TABLE events (
     id serial PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     date DATE NOT NULL,
-    time TIME NOT NULL,
+    start_time TIME NOT NULL,
+    end_time TIME,
     url VARCHAR(100),
     host_id INTEGER REFERENCES hosts(id) ON UPDATE CASCADE,
-    venue_id INTEGER REFERENCES venues(id) ON UPDATE CASCADE,
-    duration VARCHAR(50)
+    venue_id INTEGER REFERENCES venues(id) ON UPDATE CASCADE
 )
 
 CREATE TABLE users (
