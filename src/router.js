@@ -9,6 +9,7 @@ const router = (request, response) => {
     handlers.staticFileHandler(request, response, endpoint);
   }
   else if (endpoint.indexOf('search') !== -1) {
+    console.log(request);
     handlers.searchHandler(request, response, endpoint);
   }
   else if (endpoint.indexOf('add-event') !== -1) {
