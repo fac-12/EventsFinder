@@ -35,9 +35,16 @@ searchEventForm.addEventListener('submit', function(e){
     request(url, searchEvent, 'GET');
 });
 
-function updateHostList() {
-  
+function requestHostList() {
+  request('/get-hosts',updateHostList,'GET' );
+
 }
+function updateHostList(response){
+  console.log(response);
+
+
+}
+requestHostList();
 
 function request(url, cb, method, body) {
     var xhr = new XMLHttpRequest();
@@ -51,4 +58,3 @@ function request(url, cb, method, body) {
     console.log("sending "+body);
     xhr.send(body);
   }
-

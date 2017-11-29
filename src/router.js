@@ -12,10 +12,11 @@ const router = (request, response) => {
     handlers.searchHandler(request, response, endpoint);
   }
   else if (endpoint.indexOf('add-event') !== -1) {
-    console.log("in handler");
     handlers.addEventHandler(request, response, endpoint);
   }
-  else {
+  else if (endpoint.indexOf('get-hosts')!== -1){
+     handlers.getHostsHandler(request,response,endpoint);
+  }else {
     response.writeHead(404, {'Content-Type': 'text/plain'});
     response.end('404 resource not found');
   }
