@@ -77,5 +77,6 @@ module.exports = {
   homeHandler,
   staticFileHandler,
   searchHandler,
-  addEventHandler
+  addEventHandler,
+  getHostsHandler
 };

@@ -1,6 +1,7 @@
 const handlers = require('./handler.js');
 
 const router = (request, response) => {
+
   const endpoint = request.url;
   if (endpoint === '/') {
    handlers.homeHandler(request, response);

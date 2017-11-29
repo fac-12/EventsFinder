@@ -8,6 +8,7 @@ var startDatePicker = document.getElementById('start-date-picker');
 var endDatePicker = document.getElementById('end-date-picker');
 var errorDisplay = document.getElementById('error-display');
 var searchEvent = document.getElementById('search-event');
+var datalist = document.getElementById('hosts');
 
 
 addEventForm.addEventListener('submit', function(e){
@@ -40,10 +41,17 @@ function requestHostList() {
 
 }
 function updateHostList(response){
-  console.log(response);
-
+   while(datalist.firstChild){
+     datalist.removeChild(datalist.firstChild);
+   }
+   response.forEach(function(host){
+     var option = document.createElement('option');
+     option.value = host.name;
+     datalist.appendChild(option);
+   });
 
 }
+
 requestHostList();
 
 function request(url, cb, method, body) {
