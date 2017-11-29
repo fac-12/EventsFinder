@@ -12,9 +12,6 @@ var searchEvent = document.getElementById('search-event');
 
 addEventForm.addEventListener('submit', function(e){
     e.preventDefault();
-    var url = '/add-event&' + 'name=' + inputName.value + "&date=" + datePicker.value
-                 + "&event-time=" + eventTime.value + "&venue-option=" + venueOptions.value;
-    request(url, addEvent, 'POST');
 })
 
 searchEventForm.addEventListener('submit', function(e){
