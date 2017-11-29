@@ -9,7 +9,6 @@ INSERT INTO venues(name, address, postcode) VALUES
     ('Space4', '4 Fonthill Rd, 1st Floor, London', 'N4 3HF'),
     ('Facebook Headquarters', '', '');
 
-
 INSERT INTO events(name, date, start_time, end_time, url, host_id, venue_id) VALUES
     ('Coding for Everyone', '04/12/2017', '18:30', '20:00', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/', 1, 1),
     ('Coding for Everyone', '04/12/2017', '18:30', '20:00', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/', 1, 2),
