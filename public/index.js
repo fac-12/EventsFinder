@@ -33,22 +33,22 @@ function request(url, cb, method, body) {
   xhr.send(body);
 }
 
-function updateDataList(data,list) {
-  while(list.firstChild){
+function updateDataList(data, list) {
+  while (list.firstChild) {
     list.removeChild(list.firstChild);
   }
-  data.forEach(function(element){
+  data.forEach(function (element) {
     var option = document.createElement('option');
     option.value = element.host_name;
     list.appendChild(option);
   });
 }
 
-addEventForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    var url = '/add-event';
-    var body = 'name='+addEventName.value+'&date='+addEventDate.value+'&start='+addEventStartTime.value+'&host='+addEventHost.value+'&venuename='+addEventVenueName.value+'&venueaddress='+addEventVenueAddress.value+'&venuepostcode='+addEventVenuePostcode.value+'&url='+addEventUrl.value;
-    request(url, addEvent, 'POST', body);
+addEventForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var url = '/add-event';
+  var body = 'name=' + addEventName.value + '&date=' + addEventDate.value + '&start=' + addEventStartTime.value + '&host=' + addEventHost.value + '&venuename=' + addEventVenueName.value + '&venueaddress=' + addEventVenueAddress.value + '&venuepostcode=' + addEventVenuePostcode.value + '&url=' + addEventUrl.value;
+  request(url, addEvent, 'POST', body);
 });
 
 function addEvent(response) {
@@ -56,22 +56,58 @@ function addEvent(response) {
 };
 
 function searchEvent(response) {
+  hideEvents();
   console.log(response);
-
+  response.forEach(function (event, index) {
+    var targetbox = document.getElementById('event-' + (index + 1));
+    var title = targetbox.firstElementChild;
+    title.textContent = event.event_name;
+    title.setAttribute('href', event.event_url);
+    var date = title.nextSibling;
+    date.textContent = event.event_date.split('T')[0];
+    var time = date.nextSibling;
+    time.textContent = event.event_time.split(':')[0] + ':' + event.event_time.split(':')[1];
+    var hostname = time.nextSibling;
+    hostname.textContent = event.host_name;
+    var venuename = hostname.nextSibling;
+    venuename.textContent = event.venue_name;
+    var address = venuename.nextSibling;
+    address.textContent = event.venue_address;
+    var postcode = address.nextSibling;
+    postcode.textContent = event.venue_postcode;
+    targetbox.className = 'eventbox';
+  })
 };
 
-searchEventForm.addEventListener('submit', function(e){
-    e.preventDefault();
-    var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
+function hideEvents() {
+  var eventboxes = document.getElementsByClassName('eventbox');
+  [].forEach.call(eventboxes, function (box) {
+    box.className = 'eventbox hidden';
+  })
+}
 
-    request(url, searchEvent, 'GET');
+/* <article id="event-1" class="eventbox hidden">
+<a href="" class="event_name"></a>
+<p class="event_date"></p>
+<p class="event_time"></p>
+<p class="host_name"></p>
+<p class="venue_name"></p>
+<p class="venue_address"></p>
+<p class="venue_postcode"></p>
+</article> */
+
+searchEventForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
+
+  request(url, searchEvent, 'GET');
 });
 
 function requestHostList() {
-  request('/get-hosts',updateHostList,'GET' );
+  request('/get-hosts', updateHostList, 'GET');
 }
 
-function updateHostList(response){
+function updateHostList(response) {
   updateDataList(response, searchHostList);
   updateDataList(response, addEventHostList);
 }

@@ -10,6 +10,19 @@ form {
     margin: 20px;
 }
 
+.forms, .events-display {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    min-width: 350px;
+    height: 100vh;
+    border: 1px solid red;
+}
+
+.events-display {
+    width: 100%;
+}
+
 #add-event-form {
     width: 300px;
 }
@@ -37,4 +50,21 @@ form button {
     width: 5rem;
     margin: 5px;
     align-self: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.eventbox {
+    border: 1px solid black;
+    width: 90%;
+    margin: 10px;
+}
+
+.flex-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    border: 1px solid black;
 }
