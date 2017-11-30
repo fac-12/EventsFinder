@@ -90,7 +90,6 @@ function hideEvents() {
   })
 }
 
-<<<<<<< HEAD
 /* <article id="event-1" class="eventbox hidden">
 <a href="" class="event_name"></a>
 <p class="event_date"></p>
@@ -103,8 +102,8 @@ function hideEvents() {
 arrowClick.addEventListener('click', function(){
   addEventForm.classList.toggle('hidden');
 })
-=======
->>>>>>> master
+
+
 searchEventForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
