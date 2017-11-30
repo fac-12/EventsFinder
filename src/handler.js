@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const querystring = require('querystring');
 const queries = require('./queries.js');
+const addEvent = require('./addEvent.js');
 
 const homeHandler = (request, response) => {
   const filePath = path.join(__dirname, '..', 'public', 'index.html')
@@ -85,20 +86,7 @@ const addEventHandler = (request, response, endpoint) => {
   });
   request.on('end', function() {
     var parsedData = querystring.parse(formData);
-    console.log(parsedData);
-    queries.addEvent(parsedData.name, parsedData.date, parsedData.start, parsedData.host, parsedData.venuename, parsedData.venueaddress, parsedData.venuepostcode, parsedData.url, (err, res) => {
-      if (err) {
-        response.writeHead(500, {
-          'Content-Type': 'text/plain'
-        });
-        response.end('Problem with the server');
-      } else {
-        response.writeHead(200, {
-          'Content-Type': 'text/plain'
-        });
-        response.end('Submitted event');
-      }
-    })
+    addEvent.checkMeetup(parsedData,response);
   });
 };
 
