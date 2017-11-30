@@ -25,9 +25,6 @@ const staticFileHandler = (request, response, endpoint) => {
     css: 'txt/css',
     js: 'application/javascript',
     ico: 'image/x-icon',
-    ttf: 'application/x-font-truetype',
-    woff: 'application/font-woff',
-    woff2: 'application/font-woff'
   }
   const extension = endpoint.split('.')[1].split('?')[0];
   const filePath = path.join(__dirname, '..', endpoint)
