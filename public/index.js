@@ -63,19 +63,22 @@ function searchEvent(response) {
     var title = targetbox.firstElementChild;
     title.textContent = event.event_name;
     title.setAttribute('href', event.event_url);
-    var date = title.nextSibling;
+    var date = title.nextElementSibling;
     date.textContent = event.event_date.split('T')[0];
-    var time = date.nextSibling;
+    var time = date.nextElementSibling;
     time.textContent = event.event_time.split(':')[0] + ':' + event.event_time.split(':')[1];
-    var hostname = time.nextSibling;
+    var hostname = time.nextElementSibling;
     hostname.textContent = event.host_name;
-    var venuename = hostname.nextSibling;
+    var venuename = hostname.nextElementSibling;
     venuename.textContent = event.venue_name;
-    var address = venuename.nextSibling;
+    var address = venuename.nextElementSibling;
     address.textContent = event.venue_address;
-    var postcode = address.nextSibling;
+    var postcode = address.nextElementSibling;
     postcode.textContent = event.venue_postcode;
     targetbox.className = 'eventbox';
+    var attendance = postcode.nextElementSibling.firstElementChild;
+    console.log(attendance);
+    attendance.textContent = event.count + ' ';
   })
 };
 
@@ -85,16 +88,6 @@ function hideEvents() {
     box.className = 'eventbox hidden';
   })
 }
-
-/* <article id="event-1" class="eventbox hidden">
-<a href="" class="event_name"></a>
-<p class="event_date"></p>
-<p class="event_time"></p>
-<p class="host_name"></p>
-<p class="venue_name"></p>
-<p class="venue_address"></p>
-<p class="venue_postcode"></p>
-</article> */
 
 searchEventForm.addEventListener('submit', function (e) {
   e.preventDefault();
