@@ -21,12 +21,23 @@ form {
     padding-top: 1.5rem;
 }
 
-.forms, .events-display {
+.forms {
     display: flex;
     flex-direction: column;
-    width: 22rem;
-    min-width: 22rem;
-    border: 1px solid red;
+    align-items: center;
+    width: 25rem;
+    min-width: 25rem;
+    border-right: 3px solid grey;
+}
+
+.search-event {
+    margin-top: 15px;
+}
+
+.events-display {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 .add-event-container {
     display: flex;
@@ -41,11 +52,11 @@ form {
 }
 
 #add-event-form {
-    width: 18.75rem;
+    width: 90%;
 }
 
 #search-event-form {
-    width: 18.75rem;
+    width: 90%;
 }
 
 label {
@@ -86,7 +97,6 @@ form button {
     display: flex;
     height: 100vh;
     width: 100vw;
-    border: 1px solid black;
 }
 .eventbox {
     padding: 1rem;
@@ -98,7 +108,16 @@ a {
     display: block;
 }
 
-@media only screen and (max-width: 500px) {
+.attend_div {
+    display: flex;
+}
+
+.attendance {
+    display:inline-block;
+    margin-right: 0.3rem;
+}
+
+@media only screen and (max-width: 650px) {
 
     .heading {
         text-align: center;
@@ -129,10 +148,4 @@ a {
         display: block;
     }
 
-.attend-flex {
-    display: flex;
-}
-
-.attendance {
-    display:inline-block;
 }

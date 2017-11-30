@@ -11,228 +11,258 @@
 
 <body>
   <div class="flex-container">
-  <div class="forms">
-   <h1 class="heading"> EventFinder </h1>
-    <form id="search-event-form">
-      <label for="start-date-picker" class="input-field"> Start Date
-        <input type="date" class="start-date-picker" id="start-date-picker">
-      </label>
-      <label for="end-date-picker" class="input-field"> End Date (optional)
-        <input type="date" class="end-date-picker" id="end-date-picker">
-      </label>
-      <label for='search-host'>Search by Host
-        <input id='search-host' class='input-field' list='hosts'>
-        <datalist id="hosts">
+    <div class="forms">
+      <h1 class="heading"> EventFinder </h1>
+      <h3 class="search-event"> Search for Events </h3>
+      <form id="search-event-form">
+        <label for="start-date-picker" class="input-field"> Start Date
+          <input type="date" class="start-date-picker" id="start-date-picker">
+        </label>
+        <label for="end-date-picker" class="input-field"> End Date (optional)
+          <input type="date" class="end-date-picker" id="end-date-picker">
+        </label>
+        <label for='search-host'>Search by Host
+          <input id='search-host' class='input-field' list='hosts'>
+          <datalist id="hosts">
+          </datalist>
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+      <div class="add-event-container">
+        <h3 class="add-event"> Add Event </h3>
+        <button class="arrow" id="arrow">⇣</button>
+      </div>
+      <form id="add-event-form" class="hidden">
+        <label for='name' class='required-label'> Name
+          <input name='name' id='name' class='input-field' type="text">
+        </label>
+        <label for="date-picker" class='required-label'> Date
+          <input name="date-picker" type="date" class="date-picker" id="date-picker">
+        </label>
+        <label for='event-start-time' class='required-label'> Time
+          <input name='event-start-time' id='event-start-time' class='input-field' type="time">
+        </label>
+        <label for='host-name' class='required-label'> Host Name
+          <input name='host-name' id='host-name' class='input-field' type="text" list="add-hosts">
+        </label>
+        <datalist id="add-hosts">
         </datalist>
-      </label>
-      <button type="submit">Submit</button>
-    </form>
-    <div class="add-event-container">
-    <h3 class="add-event"> Add Event </h3><button class="arrow" id="arrow">⇣</button>
+        <label for='venue-name' class='required-label'> Venue Name
+          <input name='venue-name' id='venue-name' class='input-field' type="text">
+        </label>
+        <label for='venue-address' class='required-label'> Venue Address
+          <input name='venue-address' id='venue-address' class='input-field' type="text">
+        </label>
+        <label for='venue-postcode' class='required-label'> Venue Postcode
+          <input name='venue-postcode' id='venue-postcode' class='input-field' type="text">
+        </label>
+        <label for='event-url' class='optional-label'> Website
+          <input name='event-url' id='event-url' class='input-field' type="text">
+        </label>
+        <button type="submit">Submit</button>
+      </form>
     </div>
-    <form id="add-event-form" class="hidden">
-      <label for='name' class='required-label'> Name
-        <input name='name' id='name' class='input-field' type="text">
-      </label>
-      <label for="date-picker" class='required-label'> Date
-        <input name="date-picker" type="date" class="date-picker" id="date-picker">
-      </label>
-      <label for='event-start-time' class='required-label'> Time
-        <input name='event-start-time' id='event-start-time' class='input-field' type="time">
-      </label>
-      <label for='host-name' class='required-label'> Host Name
-        <input name='host-name' id='host-name' class='input-field' type="text" list="add-hosts">
-      </label>
-      <datalist id="add-hosts">
-      </datalist>
-      <label for='venue-name' class='required-label'> Venue Name
-        <input name='venue-name' id='venue-name' class='input-field' type="text">
-      </label>
-      <label for='venue-address' class='required-label'> Venue Address
-        <input name='venue-address' id='venue-address' class='input-field' type="text">
-      </label>
-      <label for='venue-postcode' class='required-label'> Venue Postcode
-        <input name='venue-postcode' id='venue-postcode' class='input-field' type="text">
-      </label>
-      <label for='event-url' class='optional-label'> Website
-        <input name='event-url' id='event-url' class='input-field' type="text">
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <section class="events-display">
+      <div class="error_display hidden"> </div>
+      <article id="event-1" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-2" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-3" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-4" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-5" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-6" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-7" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-8" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-9" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-10" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-11" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-12" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-13" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-14" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+      <article id="event-15" class="eventbox hidden">
+        <a href="" class="event_name" target="_blank"></a>
+        <p class="event_date"></p>
+        <p class="event_time"></p>
+        <p class="host_name"></p>
+        <p class="venue_name"></p>
+        <p class="venue_address"></p>
+        <p class="venue_postcode"></p>
+        <div class="attend_div">
+          <p class="attendance"></p>
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </div>
+      </article>
+    </section>
   </div>
-  <section class="events-display">
-    <div class="error_display hidden"> </div>
-    <article id="event-1" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <div class="attend_div">
-          <p class="attendance"></p>
-          <i class="fa fa-users" aria-hidden="true"></i>
-      </div>
-    </article>
-    <article id="event-2" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <div class="attend_div">
-          <p class="attendance"></p>
-          <i class="fa fa-users" aria-hidden="true"></i>
-      </div>
-    </article>
-    <article id="event-3" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <div class="attend_div">
-          <p class="attendance"></p>
-          <i class="fa fa-users" aria-hidden="true"></i>
-      </div>
-    </article>
-    <article id="event-4" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <div class="attend_div">
-          <p class="attendance"></p>
-          <i class="fa fa-users" aria-hidden="true"></i>
-      </div>
-    </article>
-    <article id="event-5" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <div class="attend_div">
-          <p class="attendance"></p>
-          <i class="fa fa-users" aria-hidden="true"></i>
-      </div>
-    </article>
-    <article id="event-6" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <div class="attend_div">
-          <p class="attendance"></p>
-          <i class="fa fa-users" aria-hidden="true"></i>
-      </div>
-    </article>
-    <article id="event-7" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <p class="attendance"></p>
-    </article>
-    <article id="event-8" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <p class="attendance"></p>
-    </article>
-    <article id="event-9" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <p class="attendance"></p>
-    </article>
-    <article id="event-10" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <p class="attendance"></p>
-    </article>
-    <article id="event-11" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <p class="attendance"></p>
-    </article>
-    <article id="event-12" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <p class="attendance"></p>
-    </article>
-    <article id="event-13" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <p class="attendance"></p>
-    </article>
-    <article id="event-14" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <p class="attendance"></p>
-    </article>
-    <article id="event-15" class="eventbox hidden">
-      <a href="" class="event_name" target="_blank"></a>
-      <p class="event_date"></p>
-      <p class="event_time"></p>
-      <p class="host_name"></p>
-      <p class="venue_name"></p>
-      <p class="venue_address"></p>
-      <p class="venue_postcode"></p>
-      <p class="attendance"></p>
-    </article>
-  </section>
-</div>
 </body>
 <script src="https://use.fontawesome.com/61c5e9ec59.js"></script>
 <script src="./public/index.js"></script>
+
 </html>
