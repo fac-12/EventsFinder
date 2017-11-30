@@ -10,37 +10,51 @@
 </head>
 
 <body>
-  <form id="add-event-form" action="/add-event" method="post">
-    <label for='name'>Name
-      <input id='name' class='input-field' type="text" >
-    </label>
-    <label for="date-picker" class="input-field"> Start Date
-       <input type="date" class="date-picker" id="date-picker">
-    </label>
-    <label for='eventTime'>Time
-      <input id='eventTime' class='input_type' type="time" >
-    </label>
-    <select class="venue_options" name="">
-    <option value="Node Girls"> Node Girls  </option>
- </select>
-    <button type="submit">Submit</button>
-  </form>
-
-  <form id="search-event-form" action="/search" method="get">
-    <label for="start-date-picker" class="input-field"> Start Date
-      <input type="date" class="start-date-picker" id="start-date-picker">
-   </label>
-    <label for="end-date-picker" class="input-field"> End Date (optional)
-       <input type="date" class="end-date-picker" id="end-date-picker">
-   </label>
-    <label for='search-event'>Search by Host
-     <input id='search-event' class='input-field' list='hosts'>
-     <datalist id="hosts">
-
-     </datalist>
-   </label>
-    <button type="submit">Submit</button>
-  </form>
+  <div class="forms">
+    <form id="search-event-form">
+      <label for="start-date-picker" class="input-field"> Start Date
+        <input type="date" class="start-date-picker" id="start-date-picker">
+      </label>
+      <label for="end-date-picker" class="input-field"> End Date (optional)
+        <input type="date" class="end-date-picker" id="end-date-picker">
+      </label>
+      <label for='search-event'>Search by Host
+        <input id='search-event' class='input-field' list='hosts'>
+        <datalist id="hosts">
+        </datalist>
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+    <form id="add-event-form">
+      <label for='name' class='required-label'> Name
+        <input name='name' id='name' class='input-field' type="text">
+      </label>
+      <label for="date-picker" class='required-label'> Date
+        <input name="date-picker" type="date" class="date-picker" id="date-picker">
+      </label>
+      <label for='event-start-time' class='required-label'> Time
+        <input name='event-start-time' id='event-start-time' class='input-field' type="time">
+      </label>
+      <label for='host-name' class='required-label'> Host Name
+        <input name='host-name' id='host-name' class='input-field' type="text" list="add-hosts">
+      </label>
+      <datalist id="add-hosts">
+      </datalist>
+      <label for='venue-name' class='required-label'> Venue Name
+        <input name='venue-name' id='venue-name' class='input-field' type="text">
+      </label>
+      <label for='venue-address' class='required-label'> Venue Address
+        <input name='venue-address' id='venue-address' class='input-field' type="text">
+      </label>
+      <label for='venue-postcode' class='required-label'> Venue Postcode
+        <input name='venue-postcode' id='venue-postcode' class='input-field' type="text">
+      </label>
+      <label for='event-url' class='optional-label'> Website
+        <input name='event-url' id='event-url' class='input-field' type="text">
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 
   <section class="events-display">
     <div class="error_display"> </div>

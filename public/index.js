@@ -1,21 +1,53 @@
+// Add Event DOM elements
 var addEventForm = document.getElementById('add-event-form');
+var addEventName = document.getElementById('name');
+var addEventDate = document.getElementById('date-picker');
+var addEventStartTime = document.getElementById('event-start-time');
+var addEventHost = document.getElementById('host-name');
+var addEventVenueName = document.getElementById('venue-name');
+var addEventVenueAddress = document.getElementById('venue-address');
+var addEventVenuePostcode = document.getElementById('venue-postcode');
+var addEventUrl = document.getElementById('event-url');
+var addEventHostList = document.getElementById('add-hosts');
+
+// Search Event DOM elements
 var searchEventForm = document.getElementById('search-event-form');
-var inputName = document.getElementById('name');
-var eventTime = document.getElementById('event-time');
-var venueOptions = document.getElementById('venue-options');
-var datePicker = document.getElementById('date-picker')
 var startDatePicker = document.getElementById('start-date-picker');
 var endDatePicker = document.getElementById('end-date-picker');
-var errorDisplay = document.getElementById('error-display');
-var searchEvent = document.getElementById('search-event');
-var datalist = document.getElementById('hosts');
+var searchHosts = document.getElementById('search-host');
+var searchHostList = document.getElementById('hosts');
 
+// Other DOM elements
+var errorDisplay = document.getElementById('error-display');
+
+// Helper Functions
+function request(url, cb, method, body) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      var result = JSON.parse(xhr.responseText);
+      cb(result);
+    }
+  };
+  xhr.open(method, url, true);
+  xhr.send(body);
+}
+
+function updateDataList(data,list) {
+  while(list.firstChild){
+    list.removeChild(list.firstChild);
+  }
+  data.forEach(function(element){
+    var option = document.createElement('option');
+    option.value = element.name;
+    list.appendChild(option);
+  });
+}
 
 addEventForm.addEventListener('submit', function(e){
     e.preventDefault();
     var url = '/add-event';
-    var body = 'name=' + inputName.value + "&date=" + datePicker.value
-                 + "&time=" + eventTime.value + "&venue=" + venueOptions.value;
+    var body = 'name='+addEventName.value+'&date='+addEventDate.value+'&start='+addEventStartTime.value+'&host='+addEventHost.value+'&venuename='+addEventVenueName.value+'&venueaddress='+addEventVenueAddress.value+'&venuepostcode='+addEventVenuePostcode.value+'&url='+addEventUrl.value;
     request(url, addEvent, 'POST', body);
 });
 
@@ -38,31 +70,11 @@ searchEventForm.addEventListener('submit', function(e){
 
 function requestHostList() {
   request('/get-hosts',updateHostList,'GET' );
-
 }
-function updateHostList(response){
-   while(datalist.firstChild){
-     datalist.removeChild(datalist.firstChild);
-   }
-   response.forEach(function(host){
-     var option = document.createElement('option');
-     option.value = host.name;
-     datalist.appendChild(option);
-   });
 
+function updateHostList(response){
+  updateDataList(response, searchHostList);
+  updateDataList(response, addEventHostList);
 }
 
 requestHostList();
-
-function request(url, cb, method, body) {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && xhr.status === 200) {
-        var result = JSON.parse(xhr.responseText);
-        cb(result);
-      }
-    };
-    xhr.open(method, url, true);
-    console.log("sending "+body);
-    xhr.send(body);
-  }
