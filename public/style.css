@@ -68,3 +68,11 @@ form button {
     width: 100vw;
     border: 1px solid black;
 }
+
+.attend-flex {
+    display: flex;
+}
+
+.attendance {
+    display:inline-block;
+}
