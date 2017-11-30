@@ -6,6 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 
 .DS_store
+config.env
+package-lock.json
 
 # Runtime data
 pids

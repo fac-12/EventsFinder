@@ -39,7 +39,7 @@ function updateDataList(data,list) {
   }
   data.forEach(function(element){
     var option = document.createElement('option');
-    option.value = element.name;
+    option.value = element.host_name;
     list.appendChild(option);
   });
 }
@@ -73,6 +73,7 @@ function requestHostList() {
 }
 
 function updateHostList(response){
+  console.log(response);
   updateDataList(response, searchHostList);
   updateDataList(response, addEventHostList);
 }
