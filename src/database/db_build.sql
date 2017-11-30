@@ -1,30 +1,17 @@
 BEGIN;
 
-DROP TABLE IF EXISTS hosts, venues, events, users, attendance, comments;
-
-CREATE TABLE hosts (
-    id serial PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    website VARCHAR(100),
-    email VARCHAR(50)
-);
-
-CREATE TABLE venues (
-    id serial PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    address VARCHAR(100) NOT NULL,
-    postcode VARCHAR(10) NOT NULL
-);
+DROP TABLE IF EXISTS events, users, attendance, comments;
 
 CREATE TABLE events (
     id serial PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    date DATE NOT NULL,
-    start_time TIME NOT NULL,
-    end_time TIME,
-    url VARCHAR(100),
-    host_id INTEGER REFERENCES hosts(id) ON UPDATE CASCADE,
-    venue_id INTEGER REFERENCES venues(id) ON UPDATE CASCADE
+    event_name VARCHAR(100) NOT NULL,
+    event_date DATE NOT NULL,
+    event_time TIME NOT NULL,
+    host_name VARCHAR(100) NOT NULL,
+    venue_name VARCHAR(100) NOT NULL,
+    venue_address VARCHAR(100) NOT NULL,
+    venue_postcode VARCHAR(10) NOT NULL,
+    event_url VARCHAR(100)
 );
 
 CREATE TABLE users (

@@ -1,19 +1,10 @@
 BEGIN;
 
-INSERT INTO hosts(name, website, email) VALUES
-    ('Founders and Coders', 'http://www.foundersandcoders.com', 'hello@foundersandcoders.com'),
-    ('ReactJS Girls London', 'https://www.meetup.com/ReactJS-Girls-London', '');
-
-INSERT INTO venues(name, address, postcode) VALUES
-    ('Founders and Coders', '14 Palmers Road, London', 'E2 0SY'),
-    ('Space4', '4 Fonthill Rd, 1st Floor, London', 'N4 3HF'),
-    ('Facebook Headquarters', '10 Brock St, Kings Cross', 'NW1 3FG');
-
-INSERT INTO events(name, date, start_time, end_time, url, host_id, venue_id) VALUES
-    ('Coding for Everyone', '04/12/2017', '18:30', '20:00', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/', 1, 1),
-    ('Coding for Everyone', '04/12/2017', '18:30', '20:00', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/', 1, 2),
-    ('Coding for Women', '12/12/2017', '18:30', '20:00','https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/', 1, 1),
-    ('ReactJS Girls #4 - From React to React Native: How Hard Can It Be?', '12/12/2017', '18:15', '20:30','', 2, 3);
+INSERT INTO events(host_name, venue_name, venue_address, venue_postcode, event_name, event_date, event_start_time, event_url) VALUES
+    ('Founders and Coders', 'Founders and Coders', '14 Palmers Road, London', 'E2 0SY','Coding for Everyone', '04/12/2017', '18:30', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/'),
+    ('Founders and Coders', 'Space4', '4 Fonthill Rd, 1st Floor, London', 'N4 3HF','Coding for Everyone', '04/12/2017', '18:30', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/'),
+    ('Founders and Coders', 'Founders and Coders', '14 Palmers Road, London', 'E2 0SY','Coding for Women', '04/12/2017', '18:30', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/'),
+    ('ReactJS Girls London', 'Facebook Headquarters', '10 Brock St, Kings Cross', 'NW1 3FG','ReactJS Girls #4 - From React to React Native: How Hard Can It Be?', '12/12/2017', '18:15',''),
 
 INSERT INTO users(first_name, last_name, email) VALUES
     ('Shannon', 'W', 'shannon@gmail.com'),
