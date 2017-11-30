@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 20px;
+}
+
+#add-event-form {
+    width: 300px;
+}
+
+#search-event-form {
+    width: 300px;
+}
+
+label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    margin: 5px;
+}
+
+label > input {
+    width: 50%;
+    font-size: 1rem;
+}
+
+form button {
+    font-size: 1rem;
+    height: 2rem;
+    width: 5rem;
+    margin: 5px;
+    align-self: center;
+}
