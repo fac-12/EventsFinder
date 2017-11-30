@@ -9,6 +9,7 @@ var addEventVenueAddress = document.getElementById('venue-address');
 var addEventVenuePostcode = document.getElementById('venue-postcode');
 var addEventUrl = document.getElementById('event-url');
 var addEventHostList = document.getElementById('add-hosts');
+var arrowClick = document.getElementById('arrow');
 
 // Search Event DOM elements
 var searchEventForm = document.getElementById('search-event-form');
@@ -88,6 +89,20 @@ function hideEvents() {
     box.className = 'eventbox hidden';
   })
 }
+
+/* <article id="event-1" class="eventbox hidden">
+<a href="" class="event_name"></a>
+<p class="event_date"></p>
+<p class="event_time"></p>
+<p class="host_name"></p>
+<p class="venue_name"></p>
+<p class="venue_address"></p>
+<p class="venue_postcode"></p>
+</article> */
+arrowClick.addEventListener('click', function(){
+  addEventForm.classList.toggle('hidden');
+})
+
 
 searchEventForm.addEventListener('submit', function (e) {
   e.preventDefault();
