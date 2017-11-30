@@ -9,6 +9,7 @@ var addEventVenueAddress = document.getElementById('venue-address');
 var addEventVenuePostcode = document.getElementById('venue-postcode');
 var addEventUrl = document.getElementById('event-url');
 var addEventHostList = document.getElementById('add-hosts');
+var arrowClick = document.getElementById('arrow');
 
 // Search Event DOM elements
 var searchEventForm = document.getElementById('search-event-form');
@@ -95,7 +96,9 @@ function hideEvents() {
 <p class="venue_address"></p>
 <p class="venue_postcode"></p>
 </article> */
-
+arrowClick.addEventListener('click', function(){
+  addEventForm.classList.toggle('hidden');
+})
 searchEventForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;

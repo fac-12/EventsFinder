@@ -1,34 +1,51 @@
 * {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
-
+body {
+    background-color: #eff9f8;
+}
 form {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    margin: 20px;
+    border-radius: 0.4rem;
+    width: 100vw;
+    padding: 1rem;
+    margin: 1.3rem;
+    background-color: #00cbff;
+}
+.heading {
+    text-align: center;
+    margin: 0 0 1rem 0;
+    padding-top: 1.5rem;
 }
 
 .forms, .events-display {
     display: flex;
     flex-direction: column;
-    width: 350px;
-    min-width: 350px;
-    height: 100vh;
+    width: 22rem;
+    min-width: 22rem;
     border: 1px solid red;
 }
+.add-event-container {
+    display: flex;
+    justify-content: center;
+}
 
+.arrow {
+    margin-left: 1rem;
+}
 .events-display {
     width: 100%;
 }
 
 #add-event-form {
-    width: 300px;
+    width: 18.75rem;
 }
 
 #search-event-form {
-    width: 300px;
+    width: 18.75rem;
 }
 
 label {
@@ -36,7 +53,7 @@ label {
     justify-content: space-between;
     align-items: center;
     font-size: 1rem;
-    margin: 5px;
+    margin: 0.3rem;
 }
 
 label > input {
@@ -48,7 +65,7 @@ form button {
     font-size: 1rem;
     height: 2rem;
     width: 5rem;
-    margin: 5px;
+    margin: 0.3rem;
     align-self: center;
 }
 
@@ -57,9 +74,12 @@ form button {
 }
 
 .eventbox {
-    border: 1px solid black;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    border-radius: 2rem;
     width: 90%;
-    margin: 10px;
+    margin: 1rem;
 }
 
 .flex-container {
@@ -67,4 +87,45 @@ form button {
     height: 100vh;
     width: 100vw;
     border: 1px solid black;
+}
+.eventbox {
+    padding: 1rem;
+    min-width: 65%;
+    background-color: #a8e0dc;
+    color: #fff;
+}
+a {
+    display: block;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .heading {
+        text-align: center;
+        margin: 1rem;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+    .arrow {
+        margin-left: 0.5rem;
+    }
+    .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        border: none;
+    }
+   .forms, .events-display {
+       margin: 0 auto;
+       display: block;
+       border: none;
+    }
+    .eventbox {
+        padding: 1rem;
+        min-width: 65%;
+    }
+    a {
+        display: block;
+    }
 }
