@@ -56,15 +56,14 @@ function addEvent(response) {
 };
 
 function searchEvent(response) {
+  console.log(response);
 
 };
 
 searchEventForm.addEventListener('submit', function(e){
     e.preventDefault();
-    var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-host=" + searchEvent.value;
-      if (endDatePicker.value) {
-        url += '&edate=' + endDatePicker.value;
-      }
+    var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
+
     request(url, searchEvent, 'GET');
 });
 
@@ -73,7 +72,6 @@ function requestHostList() {
 }
 
 function updateHostList(response){
-  console.log(response);
   updateDataList(response, searchHostList);
   updateDataList(response, addEventHostList);
 }
