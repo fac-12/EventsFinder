@@ -128,4 +128,11 @@ a {
     a {
         display: block;
     }
+
+.attend-flex {
+    display: flex;
+}
+
+.attendance {
+    display:inline-block;
 }

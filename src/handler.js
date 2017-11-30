@@ -24,9 +24,12 @@ const staticFileHandler = (request, response, endpoint) => {
     html: 'text/html',
     css: 'txt/css',
     js: 'application/javascript',
-    ico: 'image/x-icon'
+    ico: 'image/x-icon',
+    ttf: 'application/x-font-truetype',
+    woff: 'application/font-woff',
+    woff2: 'application/font-woff'
   }
-  const extension = endpoint.split('.')[1];
+  const extension = endpoint.split('.')[1].split('?')[0];
   const filePath = path.join(__dirname, '..', endpoint)
   fs.readFile(filePath, function(err, file) {
     if (err && err.code === 'ENOENT') {
