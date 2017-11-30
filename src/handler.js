@@ -61,6 +61,7 @@ const addEventHandler = (request, response, endpoint) => {
       console.log(parsedData);
   });
 };
+
 const getHostsHandler = (request,response,endpoint)=>{
   getHosts((err,res) => {
     if(err){
