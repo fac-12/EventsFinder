@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "tape ./tests/*.test.js | tap-spec",
     "start": "node ./src/server.js"
   },
   "repository": {
@@ -20,5 +19,8 @@
   "dependencies": {
     "env2": "^2.2.0",
     "pg": "^7.4.0"
+  },
+  "engines": {
+    "node": "9.2.0"
   }
 }
