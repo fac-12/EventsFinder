@@ -42,4 +42,4 @@ const checkEvent = (event_name="", event_date="", event_time="", venue_name="", 
   })
  };
 
-module.exports= {getHosts, addEvent,searchWithoutHost,searchWithHost, checkEvent};
+module.exports= {getHosts, addEvent,searchWithoutHost,searchWithHost, checkEvent, addedLastEvent};

@@ -3,16 +3,16 @@ const queries = require('./queries.js');
 
 
 const manualAdd = (parsedData, response) => {
-    queries.checkEvent(parsedData.name, parsedData.date, parsedData.start,parsedData.venuename, (err, res) => {
-        if (err){
-            console.log(err);
-            response.writeHead(500, {
-                'Content-Type': 'text/plain'
-            });
-            response.end('Problem with the server');
-        }
-        if (res === 0){
-            if (parsedData.name && parsedData.date && parsedData.start && (parsedData.venuename || parsedData.venueaddress)) {
+    if (parsedData.name && parsedData.date && parsedData.start && (parsedData.venuename || parsedData.venueaddress)) {
+        queries.checkEvent(parsedData.name, parsedData.date, parsedData.start, parsedData.venuename, (err, res) => {
+            if (err) {
+                console.log(err);
+                response.writeHead(500, {
+                    'Content-Type': 'text/plain'
+                });
+                response.end('Problem with the server');
+            }
+            if (res === 0) {
                 queries.addEvent(parsedData.name, parsedData.date, parsedData.start, parsedData.host, parsedData.venuename, parsedData.venueaddress, parsedData.venuepostcode, parsedData.url, (err, res) => {
                     if (err) {
                         response.writeHead(500, {
@@ -26,28 +26,28 @@ const manualAdd = (parsedData, response) => {
                         response.end('Submitted event');
                     }
                 });
-            } else {
+            } else if (res === 1) {
                 response.writeHead(200, {
                     'Content-Type': 'text/plain'
                 });
-                response.end('Please provide more information about event.');
+                response.end('Event Already in database');
             }
-        } else if (res === 1){
-            response.writeHead(200, {
-                'Content-Type': 'text/plain'
-            });
-            response.end('Event Already in database');
-        }
-    })
+        });
+    } else {
+        response.writeHead(200, {
+            'Content-Type': 'text/plain'
+        });
+        response.end('Please provide more information about event.');
+    }
 };
 
 const checkMeetup = (data, response) => {
     if (data.url.includes('www.meetup.com')) {
         const urlArr = data.url.split('/');
-        if (urlArr[urlArr.length-3] == 'events') {
-            autoAdd(urlArr[urlArr.length-2], response);
-        } else if (urlArr[urlArr.length-2] == 'events') {
-            autoAdd(urlArr[urlArr.length-1], response);
+        if (urlArr[urlArr.length - 3] == 'events') {
+            autoAdd(urlArr[urlArr.length - 2], response);
+        } else if (urlArr[urlArr.length - 2] == 'events') {
+            autoAdd(urlArr[urlArr.length - 1], response);
         } else {
             manualAdd(data, response);
         }
@@ -58,7 +58,7 @@ const checkMeetup = (data, response) => {
 
 const autoAdd = (id, response) => {
     const options = {
-        url: 'https://api.meetup.com/2/events?event_id='+id,
+        url: 'https://api.meetup.com/2/events?event_id=' + id,
         method: 'GET'
     };
     request(options, (err, res, body) => {
@@ -85,7 +85,7 @@ const autoAdd = (id, response) => {
                 eventData.venueaddress = outcome.results[0].venue.address_1;
                 eventData.venuepostcode = outcome.results[0].venue.city;
                 eventData.url = outcome.results[0].event_url;
-                manualAdd(eventData,response);
+                manualAdd(eventData, response);
             }
         }
     });
@@ -101,4 +101,8 @@ function parseResponse(response) {
     }
 };
 
-module.exports = {checkMeetup, manualAdd, autoAdd};
+module.exports = {
+    checkMeetup,
+    manualAdd,
+    autoAdd
+};

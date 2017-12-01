@@ -25,6 +25,7 @@ var errorDisplay = document.getElementById('error-display');
 
 // Helper Functions
 function request(url, cb, method, body) {
+  errorDisplay.className = 'error_display hidden';
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
@@ -32,8 +33,12 @@ function request(url, cb, method, body) {
       if (result.err) {
         if(xhr.responseText == 'Submitted event'){
           showLastAddedEvent();
+          errorDisplay.className = 'error_display hidden';
         } else {
-          console.log(xhr.responseText);
+          hideEvents();
+          topHeading.textContent = "Oops, there was a problem.";
+          errorDisplay.textContent = xhr.responseText;
+          errorDisplay.className = 'error_display';
         }
       } else {
         cb(result);
@@ -54,6 +59,17 @@ function parseResponse(response) {
   }
 }
 
+function clearAddForm() {
+  addEventName.value = '';
+  addEventDate.value = '';
+  addEventStartTime.value = '';
+  addEventHost.value = '';
+  addEventVenueName.value = '';
+  addEventVenueAddress.value = '';
+  addEventVenuePostcode.value = '';
+  addEventUrl.value = '';
+}
+
 function updateDataList(data, list) {
   while (list.firstChild) {
     list.removeChild(list.firstChild);
@@ -70,13 +86,13 @@ addEventForm.addEventListener('submit', function (e) {
   var url = '/add-event';
   var body = 'name=' + addEventName.value + '&date=' + addEventDate.value + '&start=' + addEventStartTime.value + '&host=' + addEventHost.value + '&venuename=' + addEventVenueName.value + '&venueaddress=' + addEventVenueAddress.value + '&venuepostcode=' + addEventVenuePostcode.value + '&url=' + addEventUrl.value;
   request(url, showLastAddedEvent, 'POST', body);
+  clearAddForm();
 });
 
 function showLastAddedEvent(response) {
   request('/searchEventAdded', searchEvent, 'GET');
   topHeading.innerText = 'Event Added';
-
-};
+}
 
 function searchEvent(response) {
   hideEvents();

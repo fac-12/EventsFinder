@@ -102,7 +102,7 @@ const searchLastEventAdded = (request, response, endpoint) => {
       response.writeHead(200, {
         'Content-Type': 'application/json'
       });
-      console.log(res);
+      console.log("search last response: "+res);
       response.end(JSON.stringify(res));
     }
   });
