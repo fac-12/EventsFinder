@@ -26,6 +26,7 @@ function request(url, cb, method, body) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
+      console.log(xhr.responseText);
       var result = JSON.parse(xhr.responseText);
       cb(result);
     }
@@ -77,7 +78,6 @@ function searchEvent(response) {
     postcode.textContent = event.venue_postcode;
     targetbox.className = 'eventbox';
     var attendance = postcode.nextElementSibling.firstElementChild;
-    console.log(attendance);
     attendance.textContent = event.count + ' ';
   });
 }
@@ -125,7 +125,7 @@ function updateHostList(response) {
 }
 
 function loadUpcomingEvents() {
-  var url = '/search?' + 'start-date=' + new Date(Date.now()).toLocaleDateString('en-GB') + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
+  var url = '/search?' + 'start-date=' + new Date(Date.now()).toLocaleDateString('en-US') + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
   request(url, searchEvent, 'GET');
 }
 
