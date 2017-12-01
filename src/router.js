@@ -24,6 +24,7 @@ const router = (request, response) => {
   else if (endpoint.indexOf('get-hosts')!== -1){
      handlers.getHostsHandler(request,response,endpoint);
   }else {
+    console.log('not in endpoint');
     response.writeHead(404, {'Content-Type': 'text/plain'});
     response.end('404 resource not found');
   }

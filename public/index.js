@@ -31,6 +31,9 @@ function request(url, cb, method, body) {
       var result = parseResponse(xhr.responseText);
       if (result.err) {
         console.log(xhr.responseText);
+        if(xhr.responseText == 'Submitted event'){
+          showLastAddedEvent();
+        }
       } else {
         cb(result);
       }
@@ -65,10 +68,11 @@ addEventForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var url = '/add-event';
   var body = 'name=' + addEventName.value + '&date=' + addEventDate.value + '&start=' + addEventStartTime.value + '&host=' + addEventHost.value + '&venuename=' + addEventVenueName.value + '&venueaddress=' + addEventVenueAddress.value + '&venuepostcode=' + addEventVenuePostcode.value + '&url=' + addEventUrl.value;
-  request(url, addEvent, 'POST', body);
+  request(url, showLastAddedEvent, 'POST', body);
 });
 
-function addEvent(response) {
+function showLastAddedEvent(response) {
+  console.log('searcheventcalled');
   request('/searchEventAdded', searchEvent, 'GET');
   topHeading.innerText = 'Event Added';
 
