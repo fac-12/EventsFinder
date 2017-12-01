@@ -4,24 +4,26 @@ const queries = require('./queries.js');
 
 const manualAdd = (parsedData, response) => {
     if (parsedData.name && parsedData.date && parsedData.start && (parsedData.venuename || parsedData.venueaddress)) {
+        console.log("add event");
         queries.addEvent(parsedData.name, parsedData.date, parsedData.start, parsedData.host, parsedData.venuename, parsedData.venueaddress, parsedData.venuepostcode, parsedData.url, (err, res) => {
             if (err) {
-                response.writeHead(500, {
-                    'Content-Type': 'text/plain'
-                });
-                response.end({message:'Problem with the server'});
-            } else {
                 response.writeHead(200, {
-                    'Content-Type': 'text/plain'
+                    'Content-Type': 'plain/text'
                 });
-                response.end({message:'Submitted event'});
+                response.end('Problem with the server');
+            } else {
+                console.log("submitted event");
+                response.writeHead(200, {
+                    'Content-Type': 'plain/text'
+                  });
+                response.end('Submitted event');
             }
         });
     } else {
         response.writeHead(200, {
-            'Content-Type': 'text/plain'
+            'Content-Type': 'plain/text'
         });
-        response.end({message:'Please provide more information about event.'});
+        response.end('Please provide more information about event.');
     }
 };
 
@@ -47,17 +49,17 @@ const autoAdd = (id, response) => {
     };
     request(options, (err, res, body) => {
         if (err) {
-            response.writeHead(500, {
-                'Content-Type': 'text/plain'
+            response.writeHead(200, {
+                'Content-Type': 'plain/text'
             });
-            response.end({message:'Problem with the server'});
+            response.end('Problem with the server');
         } else {
             var outcome = parseResponse(body);
             if (outcome.err || outcome.results.length === 0) {
-                response.writeHead(500, {
-                    'Content-Type': 'text/plain'
+                response.writeHead(200, {
+                    'Content-Type': 'plain/text'
                 });
-                response.end({message:'Meetup API error. Enter event manually.'});
+                response.end('Meetup API error. Enter event manually.');
             } else {
                 let eventData = {};
                 var datetime = new Date(outcome.results[0].time);
