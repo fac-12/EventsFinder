@@ -26,7 +26,6 @@ function request(url, cb, method, body) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log(xhr.responseText);
       var result = JSON.parse(xhr.responseText);
       cb(result);
     }
