@@ -27,6 +27,8 @@ A site to find and add events of interest to the FAC community (with a 1990s web
     - searchWithoutHost pulls all search results
 TO BE CONTINUED
 
+**Initial Database Schema**
+
 ## Outstanding Issues
 
 - Error handling (show message when server error happens)
