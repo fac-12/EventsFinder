@@ -28,12 +28,26 @@ function request(url, cb, method, body) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      var result = JSON.parse(xhr.responseText);
-      cb(result);
+      var result = parseResponse(xhr.responseText);
+      if (result.err) {
+        console.log(xhr.responseText);
+      } else {
+        cb(result);
+      }
     }
   };
   xhr.open(method, url, true);
   xhr.send(body);
+}
+
+function parseResponse(response) {
+  try {
+      return JSON.parse(response);
+  } catch (e) {
+      return {
+          err: "Not JSON"
+      };
+  }
 }
 
 function updateDataList(data, list) {
@@ -68,7 +82,7 @@ function searchEvent(response) {
     title.textContent = event.event_name;
     title.setAttribute('href', event.event_url);
     var date = title.nextElementSibling;
-    date.textContent = event.event_date.split('T')[0];
+    date.textContent = new Date(event.event_date.split('T')[0]).toDateString('en-GB');
     var time = date.nextElementSibling;
     time.textContent = event.event_time.split(':')[0] + ':' + event.event_time.split(':')[1];
     var hostname = time.nextElementSibling;
@@ -81,7 +95,6 @@ function searchEvent(response) {
     postcode.textContent = event.venue_postcode;
     targetbox.className = 'eventbox';
     var attendance = postcode.nextElementSibling.firstElementChild;
-    console.log(attendance);
     attendance.textContent = event.count + ' ';
   });
 }
@@ -131,7 +144,7 @@ function updateHostList(response) {
 }
 
 function loadUpcomingEvents() {
-  var url = '/search?' + 'start-date=' + new Date(Date.now()).toLocaleDateString('en-GB') + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
+  var url = '/search?' + 'start-date=' + new Date(Date.now()).toLocaleDateString('en-US') + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
   request(url, searchEvent, 'GET');
 }
 

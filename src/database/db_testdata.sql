@@ -1,9 +1,9 @@
 BEGIN;
 
 INSERT INTO events(host_name, venue_name, venue_address, venue_postcode, event_name, event_date, event_time, event_url) VALUES
-    ('Founders and Coders', 'Founders and Coders', '14 Palmers Road, London', 'E2 0SY','Coding for Everyone', '04/12/2017', '18:30', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/'),
-    ('Founders and Coders', 'Space4', '4 Fonthill Rd, 1st Floor, London', 'N4 3HF','Coding for Everyone', '04/12/2017', '18:30', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/'),
-    ('Founders and Coders', 'Founders and Coders', '14 Palmers Road, London', 'E2 0SY','Coding for Women', '04/12/2017', '18:30', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/'),
+    ('Founders and Coders', 'Founders and Coders', '14 Palmers Road, London', 'E2 0SY','Coding for Everyone', 'Dec-04-2017', '18:30', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/'),
+    ('Founders and Coders', 'Space4', '4 Fonthill Rd, 1st Floor, London', 'N4 3HF','Coding for Everyone', 'Dec-04-2017', '18:30', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/'),
+    ('Founders and Coders', 'Founders and Coders', '14 Palmers Road, London', 'E2 0SY','Coding for Women', 'Dec-04-2017', '18:30', 'https://www.meetup.com/founderscoders/events/nwkhxnywqbgb/'),
     ('ReactJS Girls London', 'Facebook Headquarters', '10 Brock St, Kings Cross', 'NW1 3FG','ReactJS Girls #4 - From React to React Native: How Hard Can It Be?', '12/12/2017', '18:15','');
 
 INSERT INTO users(first_name, last_name, email) VALUES
