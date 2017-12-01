@@ -10,6 +10,7 @@ var addEventVenuePostcode = document.getElementById('venue-postcode');
 var addEventUrl = document.getElementById('event-url');
 var addEventHostList = document.getElementById('add-hosts');
 var arrowClick = document.getElementById('arrow');
+var topHeading = document.getElementById('topHeading');
 
 // Search Event DOM elements
 var searchEventForm = document.getElementById('search-event-form');
@@ -18,17 +19,27 @@ var endDatePicker = document.getElementById('end-date-picker');
 var searchHosts = document.getElementById('search-host');
 var searchHostList = document.getElementById('hosts');
 
+
 // Other DOM elements
 var errorDisplay = document.getElementById('error-display');
 
 // Helper Functions
 function request(url, cb, method, body) {
+  errorDisplay.className = 'error_display hidden';
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
       var result = parseResponse(xhr.responseText);
       if (result.err) {
-        console.log(xhr.responseText);
+        if(xhr.responseText == 'Submitted event'){
+          showLastAddedEvent();
+          errorDisplay.className = 'error_display hidden';
+        } else {
+          hideEvents();
+          topHeading.textContent = "Oops, there was a problem.";
+          errorDisplay.textContent = xhr.responseText;
+          errorDisplay.className = 'error_display';
+        }
       } else {
         cb(result);
       }
@@ -48,6 +59,17 @@ function parseResponse(response) {
   }
 }
 
+function clearAddForm() {
+  addEventName.value = '';
+  addEventDate.value = '';
+  addEventStartTime.value = '';
+  addEventHost.value = '';
+  addEventVenueName.value = '';
+  addEventVenueAddress.value = '';
+  addEventVenuePostcode.value = '';
+  addEventUrl.value = '';
+}
+
 function updateDataList(data, list) {
   while (list.firstChild) {
     list.removeChild(list.firstChild);
@@ -63,12 +85,14 @@ addEventForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var url = '/add-event';
   var body = 'name=' + addEventName.value + '&date=' + addEventDate.value + '&start=' + addEventStartTime.value + '&host=' + addEventHost.value + '&venuename=' + addEventVenueName.value + '&venueaddress=' + addEventVenueAddress.value + '&venuepostcode=' + addEventVenuePostcode.value + '&url=' + addEventUrl.value;
-  request(url, addEvent, 'POST', body);
+  request(url, showLastAddedEvent, 'POST', body);
+  clearAddForm();
 });
 
-function addEvent(response) {
-
-};
+function showLastAddedEvent(response) {
+  request('/searchEventAdded', searchEvent, 'GET');
+  topHeading.innerText = 'Event Added';
+}
 
 function searchEvent(response) {
   hideEvents();
@@ -126,6 +150,8 @@ searchEventForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
   request(url, searchEvent, 'GET');
+  topHeading.innerText = 'Searched Events'
+
 });
 
 function requestHostList() {
