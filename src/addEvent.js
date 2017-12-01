@@ -3,7 +3,6 @@ const queries = require('./queries.js');
 
 
 const manualAdd = (parsedData, response) => {
-    console.log(parsedData);
     queries.checkEvent(parsedData.name, parsedData.date, parsedData.start,parsedData.venuename, (err, res) => {
         if (err){
             console.log(err);
@@ -13,19 +12,26 @@ const manualAdd = (parsedData, response) => {
             response.end('Problem with the server');
         }
         if (res === 0){
-            queries.addEvent(parsedData.name, parsedData.date, parsedData.start, parsedData.host, parsedData.venuename, parsedData.venueaddress, parsedData.venuepostcode, parsedData.url, (err, res) => {
-                if (err) {
-                    response.writeHead(500, {
-                        'Content-Type': 'text/plain'
-                    });
-                    response.end('Problem with the server');
-                } else {
-                    response.writeHead(200, {
-                        'Content-Type': 'text/plain'
-                    });
-                    response.end('Submitted event');
-                }
-            });
+            if (parsedData.name && parsedData.date && parsedData.start && (parsedData.venuename || parsedData.venueaddress)) {
+                queries.addEvent(parsedData.name, parsedData.date, parsedData.start, parsedData.host, parsedData.venuename, parsedData.venueaddress, parsedData.venuepostcode, parsedData.url, (err, res) => {
+                    if (err) {
+                        response.writeHead(500, {
+                            'Content-Type': 'text/plain'
+                        });
+                        response.end('Problem with the server');
+                    } else {
+                        response.writeHead(200, {
+                            'Content-Type': 'text/plain'
+                        });
+                        response.end('Submitted event');
+                    }
+                });
+            } else {
+                response.writeHead(200, {
+                    'Content-Type': 'text/plain'
+                });
+                response.end('Please provide more information about event.');
+            }
         } else if (res === 1){
             response.writeHead(200, {
                 'Content-Type': 'text/plain'
