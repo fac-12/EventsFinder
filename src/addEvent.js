@@ -55,7 +55,7 @@ const autoAdd = (id, response) => {
                 let eventData = {};
                 var datetime = new Date(outcome.results[0].time);
                 eventData.name = outcome.results[0].name;
-                eventData.date = datetime.toLocaleDateString('en-GB');
+                eventData.date = datetime.toLocaleDateString('en-US');
                 eventData.start = datetime.toLocaleTimeString('en-GB');
                 eventData.host = outcome.results[0].group.name;
                 eventData.venuename = outcome.results[0].venue.name;
