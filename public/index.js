@@ -10,6 +10,7 @@ var addEventVenuePostcode = document.getElementById('venue-postcode');
 var addEventUrl = document.getElementById('event-url');
 var addEventHostList = document.getElementById('add-hosts');
 var arrowClick = document.getElementById('arrow');
+var topHeading = document.getElementById('topHeading');
 
 // Search Event DOM elements
 var searchEventForm = document.getElementById('search-event-form');
@@ -17,6 +18,7 @@ var startDatePicker = document.getElementById('start-date-picker');
 var endDatePicker = document.getElementById('end-date-picker');
 var searchHosts = document.getElementById('search-host');
 var searchHostList = document.getElementById('hosts');
+
 
 // Other DOM elements
 var errorDisplay = document.getElementById('error-display');
@@ -113,6 +115,8 @@ searchEventForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
   request(url, searchEvent, 'GET');
+  topHeading.innerText = 'Searched Events'
+
 });
 
 function requestHostList() {
