@@ -1,10 +1,10 @@
 * {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
     box-sizing: border-box;
 }
 body {
-    background-color: #eff9f8;
+    font-family: 'Lato', sans-serif;
 }
 form {
     display: flex;
@@ -13,7 +13,6 @@ form {
     width: 100vw;
     padding: 1rem;
     margin: 1.3rem;
-    background-color: #00cbff;
 }
 .heading {
     text-align: center;
@@ -27,7 +26,7 @@ form {
     align-items: center;
     width: 25rem;
     min-width: 25rem;
-    border-right: 3px solid grey;
+    border-right: 1px solid #ECECEC;
 }
 
 .search-event {
@@ -57,6 +56,17 @@ form {
 
 #search-event-form {
     width: 90%;
+    background: #f4f4f4;
+}
+
+#add-event-form {
+    background: #f4f4f4;
+    margin-top: 20px;
+}
+
+.search-event {
+    align-self: center;
+    margin-bottom: 20px;
 }
 
 label {
@@ -72,12 +82,34 @@ label > input {
     font-size: 1rem;
 }
 
+.input-field {
+    margin-top: 10px;
+}
+
+input {
+    padding: 9px;
+    border: 1px solid #e4e4e4;
+}
+
 form button {
     font-size: 1rem;
-    height: 2rem;
-    width: 5rem;
-    margin: 0.3rem;
+    outline: none;
+    padding: 16px;
+    border-radius: 3px;
+    border: 0;
+    background: #e74c3c;
+    color: white;
+    width: 55%;
+    margin-top: 25px;
+    text-transform: uppercase;
+    font-weight: 100;
     align-self: center;
+    letter-spacing: 1px;
+    min-height: 2rem;
+}
+
+.arrow {
+    border: 0;
 }
 
 .hidden {
@@ -85,24 +117,21 @@ form button {
 }
 
 .eventbox {
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    border-radius: 2rem;
-    width: 90%;
-    margin: 1rem;
+    border-radius: 2px;
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid #ECECEC;
 }
 
 .flex-container {
     display: flex;
-    height: 100vh;
     width: 100vw;
 }
 .eventbox {
     padding: 1rem;
     min-width: 65%;
-    background-color: #a8e0dc;
     color: #fff;
+    margin-bottom: 10px;
 }
 a {
     display: block;
