@@ -10,6 +10,7 @@ var addEventVenuePostcode = document.getElementById('venue-postcode');
 var addEventUrl = document.getElementById('event-url');
 var addEventHostList = document.getElementById('add-hosts');
 var arrowClick = document.getElementById('arrow');
+var topHeading = document.getElementById('topHeading');
 
 // Search Event DOM elements
 var searchEventForm = document.getElementById('search-event-form');
@@ -17,6 +18,7 @@ var startDatePicker = document.getElementById('start-date-picker');
 var endDatePicker = document.getElementById('end-date-picker');
 var searchHosts = document.getElementById('search-host');
 var searchHostList = document.getElementById('hosts');
+
 
 // Other DOM elements
 var errorDisplay = document.getElementById('error-display');
@@ -28,7 +30,11 @@ function request(url, cb, method, body) {
     if (xhr.readyState === 4 && xhr.status === 200) {
       var result = parseResponse(xhr.responseText);
       if (result.err) {
-        console.log(xhr.responseText);
+        if(xhr.responseText == 'Submitted event'){
+          showLastAddedEvent();
+        } else {
+          console.log(xhr.responseText);
+        }
       } else {
         cb(result);
       }
@@ -63,10 +69,12 @@ addEventForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var url = '/add-event';
   var body = 'name=' + addEventName.value + '&date=' + addEventDate.value + '&start=' + addEventStartTime.value + '&host=' + addEventHost.value + '&venuename=' + addEventVenueName.value + '&venueaddress=' + addEventVenueAddress.value + '&venuepostcode=' + addEventVenuePostcode.value + '&url=' + addEventUrl.value;
-  request(url, addEvent, 'POST', body);
+  request(url, showLastAddedEvent, 'POST', body);
 });
 
-function addEvent(response) {
+function showLastAddedEvent(response) {
+  request('/searchEventAdded', searchEvent, 'GET');
+  topHeading.innerText = 'Event Added';
 
 };
 
@@ -126,6 +134,8 @@ searchEventForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
   request(url, searchEvent, 'GET');
+  topHeading.innerText = 'Searched Events'
+
 });
 
 function requestHostList() {
