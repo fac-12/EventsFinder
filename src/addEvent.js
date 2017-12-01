@@ -13,7 +13,7 @@ const manualAdd = (parsedData, response) => {
             response.writeHead(200, {
                 'Content-Type': 'text/plain'
             });
-            response.end('Submitted event');
+            response.end({'Submitted event'});
         }
     });
 };
