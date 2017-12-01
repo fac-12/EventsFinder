@@ -30,9 +30,10 @@ function request(url, cb, method, body) {
     if (xhr.readyState === 4 && xhr.status === 200) {
       var result = parseResponse(xhr.responseText);
       if (result.err) {
-        console.log(xhr.responseText);
         if(xhr.responseText == 'Submitted event'){
           showLastAddedEvent();
+        } else {
+          console.log(xhr.responseText);
         }
       } else {
         cb(result);
@@ -72,7 +73,6 @@ addEventForm.addEventListener('submit', function (e) {
 });
 
 function showLastAddedEvent(response) {
-  console.log('searcheventcalled');
   request('/searchEventAdded', searchEvent, 'GET');
   topHeading.innerText = 'Event Added';
 
