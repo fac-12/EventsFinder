@@ -13,7 +13,6 @@ form {
     width: 100vw;
     padding: 1rem;
     margin: 1.3rem;
-    /* background-color: #00cbff; */
 }
 .heading {
     text-align: center;
@@ -57,6 +56,17 @@ form {
 
 #search-event-form {
     width: 90%;
+    background: #f4f4f4;
+}
+
+#add-event-form {
+    background: #f4f4f4;
+    margin-top: 20px;
+}
+
+.search-event {
+    align-self: center;
+    margin-bottom: 20px;
 }
 
 label {
@@ -72,16 +82,34 @@ label > input {
     font-size: 1rem;
 }
 
-form button {
-    font-size: 1rem;
-    height: 2rem;
-    width: 5rem;
-    margin: 0.3rem;
-    align-self: center;
+.input-field {
+    margin-top: 10px;
 }
 
-button {
+input {
+    padding: 9px;
+    border: 1px solid #e4e4e4;
+}
+
+form button {
+    font-size: 1rem;
     outline: none;
+    padding: 16px;
+    border-radius: 3px;
+    border: 0;
+    background: #e74c3c;
+    color: white;
+    width: 55%;
+    margin-top: 25px;
+    text-transform: uppercase;
+    font-weight: 100;
+    align-self: center;
+    letter-spacing: 1px;
+    min-height: 2rem;
+}
+
+.arrow {
+    border: 0;
 }
 
 .hidden {
@@ -97,13 +125,11 @@ button {
 
 .flex-container {
     display: flex;
-    height: 100vh;
     width: 100vw;
 }
 .eventbox {
     padding: 1rem;
     min-width: 65%;
-    /* background-color: #a8e0dc; */
     color: #fff;
     margin-bottom: 10px;
 }
