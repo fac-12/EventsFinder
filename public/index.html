@@ -15,13 +15,13 @@
       <h1 class="heading"> EventFinder </h1>
       <h3 class="search-event"> Search for Events </h3>
       <form id="search-event-form">
-        <label for="start-date-picker" class="input-field"> Start Date
+        <label for="start-date-picker" class="input-field"> From
           <input type="date" class="start-date-picker" id="start-date-picker">
         </label>
-        <label for="end-date-picker" class="input-field"> End Date (optional)
+        <label for="end-date-picker" class="input-field"> To (optional)
           <input type="date" class="end-date-picker" id="end-date-picker">
         </label>
-        <label for='search-host'>Search by Host
+        <label for='search-host'> Host (optional)
           <input id='search-host' class='input-field' list='hosts'>
           <datalist id="hosts">
           </datalist>
@@ -33,6 +33,7 @@
         <button class="arrow" id="arrow">⇣</button>
       </div>
       <form id="add-event-form" class="hidden">
+          <p>(Hint: you can just enter a meetup url)</p>
         <label for='name' class='required-label'> Name
           <input name='name' id='name' class='input-field' type="text">
         </label>
@@ -63,6 +64,7 @@
       </form>
     </div>
     <section class="events-display">
+      <h1 class="heading"> Search Results </h1>
       <div class="error_display hidden"> </div>
       <article id="event-1" class="eventbox hidden">
         <a href="" class="event_name" target="_blank"></a>
