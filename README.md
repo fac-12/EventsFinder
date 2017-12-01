@@ -25,10 +25,12 @@ A site to find and add events of interest to the FAC community (with a 1990s web
 - Upon loading, there are two queries run: 
     - getHosts fetches all hosts in the database
     - searchWithoutHost pulls all search results
+TO BE CONTINUED
 
 ## Outstanding Issues
 
 - Error handling (show message when server error happens)
 - Confirmation message when event added
 - Prevent repeat events from being entered
+
 - Lots of CSS
