@@ -55,6 +55,8 @@ addEventForm.addEventListener('submit', function (e) {
 });
 
 function addEvent(response) {
+  request('/searchEventAdded', searchEvent, 'GET');
+  topHeading.innerText = 'Event Added';
 
 };
 

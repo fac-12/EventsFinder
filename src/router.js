@@ -3,6 +3,7 @@ const handlers = require('./handler.js');
 const router = (request, response) => {
 
   const endpoint = request.url;
+  console.log(endpoint);
   if (endpoint === '/') {
    handlers.homeHandler(request, response);
   }
@@ -14,6 +15,11 @@ const router = (request, response) => {
   }
   else if (endpoint.indexOf('add-event') !== -1) {
     handlers.addEventHandler(request, response, endpoint);
+  }
+  //Added
+  else if (endpoint.indexOf('searchEventAdded')!== -1){
+    console.log('in search event added');
+     handlers.searchLastEventAdded(request,response,endpoint);
   }
   else if (endpoint.indexOf('get-hosts')!== -1){
      handlers.getHostsHandler(request,response,endpoint);
