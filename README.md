@@ -24,14 +24,11 @@ A site to find and add events of interest to the FAC community (with a 1990s web
 - We have four tables: events (information about events), users (information about users), attendance (many-to-many join table indicating if user has expressed interest in an event), comments (information about comments). Only the events table can be edited currently bc we have not yet implemented all functionality.
 - Upon loading, there are two queries run: 
     - getHosts fetches all hosts in the database
-    - searchWithout 
+    - searchWithoutHost pulls all search results
 
 ## Outstanding Issues
 
 - Error handling (show message when server error happens)
 - Confirmation message when event added
-- Header for Results Section
 - Prevent repeat events from being entered
-- Default start date to be today
-- Make sure date entry always en-GB format
 - Lots of CSS
