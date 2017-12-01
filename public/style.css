@@ -1,10 +1,10 @@
 * {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
     box-sizing: border-box;
 }
 body {
-    background-color: #eff9f8;
+    font-family: 'Lato', sans-serif;
 }
 form {
     display: flex;
@@ -13,7 +13,7 @@ form {
     width: 100vw;
     padding: 1rem;
     margin: 1.3rem;
-    background-color: #00cbff;
+    /* background-color: #00cbff; */
 }
 .heading {
     text-align: center;
@@ -27,7 +27,7 @@ form {
     align-items: center;
     width: 25rem;
     min-width: 25rem;
-    border-right: 3px solid grey;
+    border-right: 1px solid #ECECEC;
 }
 
 .search-event {
@@ -80,17 +80,19 @@ form button {
     align-self: center;
 }
 
+button {
+    outline: none;
+}
+
 .hidden {
     display: none;
 }
 
 .eventbox {
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    border-radius: 2rem;
-    width: 90%;
-    margin: 1rem;
+    border-radius: 2px;
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid #ECECEC;
 }
 
 .flex-container {
@@ -101,8 +103,9 @@ form button {
 .eventbox {
     padding: 1rem;
     min-width: 65%;
-    background-color: #a8e0dc;
+    /* background-color: #a8e0dc; */
     color: #fff;
+    margin-bottom: 10px;
 }
 a {
     display: block;
