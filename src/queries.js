@@ -28,4 +28,12 @@ const searchWithoutHost = (data,cb) => {
   })
 };
 
-module.exports= {getHosts, addEvent,searchWithoutHost,searchWithHost};
+const checkEvent = (event_name="", event_date="", event_time="", venue_name="", cb) => {
+  dbConnection.query('SELECT CASE WHEN EXISTS(SELECT * FROM events WHERE event_name=$1 AND event_date=$2 AND event_time=$3  AND venue_name=$4) THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT) END', [event_name, event_date, event_time, venue_name],(err,res) => {
+    if (err) cb(err);
+    else cb(null, parseInt(res.rows[0].case));
+  })
+ };
+
+module.exports= {getHosts, addEvent,searchWithoutHost,searchWithHost, checkEvent};
+
