@@ -3,19 +3,28 @@ const queries = require('./queries.js');
 
 
 const manualAdd = (parsedData, response) => {
-    queries.addEvent(parsedData.name, parsedData.date, parsedData.start, parsedData.host, parsedData.venuename, parsedData.venueaddress, parsedData.venuepostcode, parsedData.url, (err, res) => {
-        if (err) {
-            response.writeHead(500, {
-                'Content-Type': 'text/plain'
-            });
-            response.end('Problem with the server');
-        } else {
-            response.writeHead(200, {
-                'Content-Type': 'text/plain'
-            });
-            response.end({'Submitted event'});
-        }
-    });
+    if (parsedData.name && parsedData.date && parsedData.start && (parsedData.venuename || parsedData.venueaddress)) {
+        console.log("add event");
+        queries.addEvent(parsedData.name, parsedData.date, parsedData.start, parsedData.host, parsedData.venuename, parsedData.venueaddress, parsedData.venuepostcode, parsedData.url, (err, res) => {
+            if (err) {
+                response.writeHead(200, {
+                    'Content-Type': 'text/plain'
+                });
+                response.end('Problem with the server');
+            } else {
+                console.log("submitted event");
+                response.writeHead(200, {
+                    'Content-Type': 'text/plain'
+                  });
+                response.end('Submitted event');
+            }
+        });
+    } else {
+        response.writeHead(200, {
+            'Content-Type': 'text/plain'
+        });
+        response.end('Please provide more information about event.');
+    }
 };
 
 const checkMeetup = (data, response) => {
@@ -40,14 +49,14 @@ const autoAdd = (id, response) => {
     };
     request(options, (err, res, body) => {
         if (err) {
-            response.writeHead(500, {
+            response.writeHead(200, {
                 'Content-Type': 'text/plain'
             });
-            response.end('Server error');
+            response.end('Problem with the server');
         } else {
             var outcome = parseResponse(body);
             if (outcome.err || outcome.results.length === 0) {
-                response.writeHead(500, {
+                response.writeHead(200, {
                     'Content-Type': 'text/plain'
                 });
                 response.end('Meetup API error. Enter event manually.');

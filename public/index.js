@@ -26,12 +26,26 @@ function request(url, cb, method, body) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      var result = JSON.parse(xhr.responseText);
-      cb(result);
+      var result = parseResponse(xhr.responseText);
+      if (result.err) {
+        console.log(xhr.responseText);
+      } else {
+        cb(result);
+      }
     }
   };
   xhr.open(method, url, true);
   xhr.send(body);
+}
+
+function parseResponse(response) {
+  try {
+      return JSON.parse(response);
+  } catch (e) {
+      return {
+          err: "Not JSON"
+      };
+  }
 }
 
 function updateDataList(data, list) {
