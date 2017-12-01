@@ -108,6 +108,10 @@ a {
     display: block;
 }
 
+form p {
+    margin: 0px auto 10px auto;
+}
+
 .attend_div {
     display: flex;
 }

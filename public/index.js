@@ -58,7 +58,6 @@ function addEvent(response) {
 
 function searchEvent(response) {
   hideEvents();
-  console.log(response);
   response.forEach(function (event, index) {
     var targetbox = document.getElementById('event-' + (index + 1));
     var title = targetbox.firstElementChild;
@@ -80,34 +79,23 @@ function searchEvent(response) {
     var attendance = postcode.nextElementSibling.firstElementChild;
     console.log(attendance);
     attendance.textContent = event.count + ' ';
-  })
-};
+  });
+}
 
 function hideEvents() {
   var eventboxes = document.getElementsByClassName('eventbox');
   [].forEach.call(eventboxes, function (box) {
     box.className = 'eventbox hidden';
-  })
+  });
 }
 
-/* <article id="event-1" class="eventbox hidden">
-<a href="" class="event_name"></a>
-<p class="event_date"></p>
-<p class="event_time"></p>
-<p class="host_name"></p>
-<p class="venue_name"></p>
-<p class="venue_address"></p>
-<p class="venue_postcode"></p>
-</article> */
 arrowClick.addEventListener('click', function(){
   addEventForm.classList.toggle('hidden');
-})
-
+});
 
 searchEventForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var url = '/search?' + 'start-date=' + startDatePicker.value + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
-
   request(url, searchEvent, 'GET');
 });
 
@@ -120,4 +108,10 @@ function updateHostList(response) {
   updateDataList(response, addEventHostList);
 }
 
+function loadUpcomingEvents() {
+  var url = '/search?' + 'start-date=' + new Date(Date.now()).toLocaleDateString('en-GB') + "&search-host=" + searchHosts.value + '&end-date=' + endDatePicker.value;
+  request(url, searchEvent, 'GET');
+}
+
 requestHostList();
+loadUpcomingEvents();
