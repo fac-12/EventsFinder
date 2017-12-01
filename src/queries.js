@@ -15,10 +15,10 @@ const addEvent = (event_name='', event_date='', event_time='', host_name='', ven
 };
 
 const addedLastEvent = cb => {
-  dbConnection.query('SELECT * FROM events ORDER BY id DESC LIMIT 1',(err,res) => {
+  dbConnection.query('SELECT events.*, count(attendance.events_id) FROM events FULL JOIN attendance ON events.id=attendance.events_id GROUP BY events.id ORDER BY events.id DESC LIMIT 1',(err,res) => {
     if (err) cb(err);
     else cb(null, res.rows);
-  })
+  });
 };
 
 const searchWithHost = (data,cb) => {
