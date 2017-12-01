@@ -90,6 +90,24 @@ const addEventHandler = (request, response, endpoint) => {
   });
 };
 
+const searchLastEventAdded = (request, response, endpoint) => {
+
+  queries.addedLastEvent((err, res) => {
+    if (err) {
+      response.writeHead(500, {
+        'Content-Type': 'text/plain'
+      });
+      response.end('Problem with the server');
+    } else {
+      response.writeHead(200, {
+        'Content-Type': 'application/json'
+      });
+      console.log(res);
+      response.end(JSON.stringify(res));
+    }
+  });
+}
+
 const getHostsHandler = (request, response, endpoint) => {
   queries.getHosts((err, res) => {
     if (err) {
@@ -111,5 +129,6 @@ module.exports = {
   staticFileHandler,
   searchHandler,
   addEventHandler,
+  searchLastEventAdded,
   getHostsHandler
 };
