@@ -64,7 +64,7 @@ function searchEvent(response) {
     title.textContent = event.event_name;
     title.setAttribute('href', event.event_url);
     var date = title.nextElementSibling;
-    date.textContent = event.event_date.split('T')[0];
+    date.textContent = new Date(event.event_date.split('T')[0]).toDateString('en-GB');
     var time = date.nextElementSibling;
     time.textContent = event.event_time.split(':')[0] + ':' + event.event_time.split(':')[1];
     var hostname = time.nextElementSibling;
